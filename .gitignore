@@ -36,3 +36,9 @@ bin/*
 build-aux/*
 m4/
 autom4te.cache/
+
+config.status
+configure
+congif.it
+*.log
+Makefile
