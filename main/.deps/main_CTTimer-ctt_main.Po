@@ -1,0 +1,3 @@
+main/main_CTTimer-ctt_main.o: main/ctt_main.cpp src/ctt_utility.hpp
+
+src/ctt_utility.hpp:
