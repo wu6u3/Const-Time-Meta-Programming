@@ -39,6 +39,7 @@ autom4te.cache/
 
 config.status
 configure
-congif.it
+config.lt
 *.log
 Makefile
+libtool
