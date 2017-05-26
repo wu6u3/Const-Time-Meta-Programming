@@ -34,3 +34,5 @@
 
 bin/*
 build-aux/*
+m4/
+autom4te.cache/
