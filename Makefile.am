@@ -1,5 +1,7 @@
 
 # Predefine variables.
+#CTT_HOME=.
+#CTT_LIB=./libCTTimer.la
 GLOG_HOME=3rd_party/glog
 GLOG_INC=$(GLOG_HOME)/src
 GLOG_LIB=$(GLOG_HOME)/libglog.la
@@ -66,14 +68,15 @@ libCTTimer_la_CXXFLAGS = $(CTT_CXXFLAGS)
 #libCTTimer_la_LIBADD += $(CTT_LIB)
 libCTTimer_la_SOURCES =
 libCTTimer_la_SOURCES += src/ctt_utility.cpp
-
+libCTTimer_la_SOURCES += src/ctt_timer.cpp
 
 # Package include 
 pkginclude_HEADERS += src/ctt_utility.hpp
+pkginclude_HEADERS += src/ctt_timer.hpp
+
 
 EXTRA_DIST += LICENSE
-EXTRA_DIST += example
-EXTRA_DIST += Makefile.sh 
+#EXTRA_DIST += example
 
 # Project-specific targets
 echo_CXX:

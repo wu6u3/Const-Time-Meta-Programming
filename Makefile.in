@@ -150,7 +150,8 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES) $(noinst_LTLIBRARIES)
 libCTTimer_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_libCTTimer_la_OBJECTS = src/libCTTimer_la-ctt_utility.lo
+am_libCTTimer_la_OBJECTS = src/libCTTimer_la-ctt_utility.lo \
+	src/libCTTimer_la-ctt_timer.lo
 libCTTimer_la_OBJECTS = $(am_libCTTimer_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -429,6 +430,8 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # Predefine variables.
+#CTT_HOME=.
+#CTT_LIB=./libCTTimer.la
 GLOG_HOME = 3rd_party/glog
 GLOG_INC = $(GLOG_HOME)/src
 GLOG_LIB = $(GLOG_HOME)/libglog.la
@@ -449,7 +452,7 @@ lib_LTLIBRARIES = libCTTimer.la
 noinst_LTLIBRARIES = 
 
 # Package include 
-pkginclude_HEADERS = src/ctt_utility.hpp
+pkginclude_HEADERS = src/ctt_utility.hpp src/ctt_timer.hpp
 nobase_pkginclude_HEADERS = 
 dist_bin_SCRIPTS = 
 dist_pkglibexec_SCRIPTS = 
@@ -459,7 +462,7 @@ dist_check_SCRIPTS =
 check_SCRIPTS = 
 BUILT_SOURCES = 
 CLEANFILES = 
-EXTRA_DIST = LICENSE example Makefile.sh
+EXTRA_DIST = LICENSE
 PHONY_TARGETS = 
 LDADD = 
 
@@ -476,7 +479,7 @@ main_CTTimer_SOURCES = main/ctt_main.cpp
 libCTTimer_la_CXXFLAGS = $(CTT_CXXFLAGS) 
 #libCTTimer_la_LIBADD = 
 #libCTTimer_la_LIBADD += $(CTT_LIB)
-libCTTimer_la_SOURCES = src/ctt_utility.cpp
+libCTTimer_la_SOURCES = src/ctt_utility.cpp src/ctt_timer.cpp
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -568,6 +571,8 @@ src/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/$(DEPDIR)
 	@: > src/$(DEPDIR)/$(am__dirstamp)
 src/libCTTimer_la-ctt_utility.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libCTTimer_la-ctt_timer.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 
 libCTTimer.la: $(libCTTimer_la_OBJECTS) $(libCTTimer_la_DEPENDENCIES) $(EXTRA_libCTTimer_la_DEPENDENCIES) 
@@ -865,6 +870,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@main/$(DEPDIR)/main_CTTimer-ctt_main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libCTTimer_la-ctt_timer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libCTTimer_la-ctt_utility.Plo@am__quote@
 
 .cpp.o:
@@ -897,6 +903,13 @@ src/libCTTimer_la-ctt_utility.lo: src/ctt_utility.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/ctt_utility.cpp' object='src/libCTTimer_la-ctt_utility.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libCTTimer_la_CXXFLAGS) $(CXXFLAGS) -c -o src/libCTTimer_la-ctt_utility.lo `test -f 'src/ctt_utility.cpp' || echo '$(srcdir)/'`src/ctt_utility.cpp
+
+src/libCTTimer_la-ctt_timer.lo: src/ctt_timer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libCTTimer_la_CXXFLAGS) $(CXXFLAGS) -MT src/libCTTimer_la-ctt_timer.lo -MD -MP -MF src/$(DEPDIR)/libCTTimer_la-ctt_timer.Tpo -c -o src/libCTTimer_la-ctt_timer.lo `test -f 'src/ctt_timer.cpp' || echo '$(srcdir)/'`src/ctt_timer.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libCTTimer_la-ctt_timer.Tpo src/$(DEPDIR)/libCTTimer_la-ctt_timer.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/ctt_timer.cpp' object='src/libCTTimer_la-ctt_timer.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libCTTimer_la_CXXFLAGS) $(CXXFLAGS) -c -o src/libCTTimer_la-ctt_timer.lo `test -f 'src/ctt_timer.cpp' || echo '$(srcdir)/'`src/ctt_timer.cpp
 
 main/main_CTTimer-ctt_main.o: main/ctt_main.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(main_CTTimer_CXXFLAGS) $(CXXFLAGS) -MT main/main_CTTimer-ctt_main.o -MD -MP -MF main/$(DEPDIR)/main_CTTimer-ctt_main.Tpo -c -o main/main_CTTimer-ctt_main.o `test -f 'main/ctt_main.cpp' || echo '$(srcdir)/'`main/ctt_main.cpp
@@ -1457,6 +1470,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-dist_binSCRIPTS \
 
 .PRECIOUS: Makefile
 
+#EXTRA_DIST += example
 
 # Project-specific targets
 echo_CXX:

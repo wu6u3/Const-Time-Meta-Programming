@@ -1,4 +1,4 @@
-src/libCTTimer_la-ctt_utility.lo: src/ctt_utility.cpp \
+src/libCTTimer_la-ctt_utility.lo: src/ctt_utility.cpp src/ctt_utility.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/x86_64-pc-linux-gnu/bits/c++config.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -116,8 +116,9 @@ src/libCTTimer_la-ctt_utility.lo: src/ctt_utility.cpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/basic_ios.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/ostream.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/istream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/istream.tcc \
-  src/ctt_utility.hpp
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/istream.tcc
+
+src/ctt_utility.hpp:
 
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/iostream:
 
@@ -414,5 +415,3 @@ src/libCTTimer_la-ctt_utility.lo: src/ctt_utility.cpp \
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/istream:
 
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/istream.tcc:
-
-src/ctt_utility.hpp:
