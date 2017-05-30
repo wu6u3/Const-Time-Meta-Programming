@@ -33,13 +33,10 @@
 
 
 bin/*
-build-aux/*
-m4/
 autom4te.cache/
-
-config.status
 configure
+config.status
 config.lt
 *.log
-Makefile
 libtool
+Makefile
