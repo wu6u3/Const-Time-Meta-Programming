@@ -2,7 +2,7 @@
 # Predefine variables.
 #CTT_HOME=.
 #CTT_LIB=./libCTTimer.la
-GLOG_HOME=3rd-3party/glog
+GLOG_HOME=3rd-party/glog
 GLOG_INC=$(GLOG_HOME)/src
 GLOG_LIB=$(GLOG_HOME)/libglog.la
 
