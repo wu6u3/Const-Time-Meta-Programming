@@ -42,3 +42,6 @@ libtool
 Makefile
 .libs/*
 build-aux/*
+aclocal.m4
+*.Tpo
+
