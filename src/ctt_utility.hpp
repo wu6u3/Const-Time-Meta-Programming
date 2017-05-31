@@ -1,7 +1,7 @@
 #ifndef __CTT_UTILITY__
 #define __CTT_UTILITY__
 
-
+#include<ratio>
 #include<iostream>
 namespace CTTimer{
 
@@ -24,13 +24,8 @@ a1--o------a2
 */
 
 template <typename T>
-static constexpr auto interpolate1D(T a1, T a2, const double p){
-  if constexpr (a2 > a1){
-    return ( a2 - a1 ) * p + a2;
-  }
-  else {
-    return ( a1 - a2 ) * p + a2; 
-  }
+static constexpr auto interpolate1D(const double p, T a1, T a2){
+    return ( a2 > a1 )?(( a2 - a1 ) * p + a1):(( a1 - a2 ) * p + a2);
 }
 
 /*  
