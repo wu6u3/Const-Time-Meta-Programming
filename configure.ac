@@ -19,7 +19,7 @@ LT_LANG([C++])
 # Specify where the Makefile
 AC_CONFIG_FILES([Makefile]) 
 # Configure 3rd-party packages.
-AC_CONFIG_SUBDIRS([3rd_party/glog])
+AC_CONFIG_SUBDIRS([3rd-party/glog])
 
 
 #AC_CONFIG_SRCDIR([src/utility.hpp])
