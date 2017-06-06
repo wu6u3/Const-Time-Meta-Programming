@@ -24,5 +24,10 @@ int main(){
   
   std::cout<<get_ratio_1D(1.0, 2.0, 1.8)<<std::endl;
   static_assert(get_ratio_1D(1.0, 2.0, 1.8));
-  
+ 
+  //using FSEQ = float ...;
+//  get_index_id< 1.0, 1.5, 2.0, 2.5, 3.0, 3.5>(2.2);
+  get_index_id(2.2, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5);
+  //std::cout<<x<<" "<<y<<std::endl;
+
 }

@@ -40,6 +40,9 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 
 AC_OPENMP
+DEBUG_CPPFLAGS=
+DEBUG_CFLAGS=
+DEBUG_LDFLAGS=
 
 
 # Checks for clang
@@ -60,6 +63,19 @@ AC_MSG_RESULT([$CLANG])
 AC_SUBST([CLANG])
 
 AC_HEADER_STDC
+
+
+# debug
+AC_ARG_ENABLE([debug],
+	[AS_HELP_STRING([--enable-debug],[Build with debug flags and options])],
+	[DEBUG=$enableval],
+	[DEBUG=no]
+)
+if test "x$DEBUG" = "xyes"; then
+	DEBUG_CPPFLAGS="${DEBUG_CPPFLAGS} -DLOG_DEBUG -DLOG_TAG=\"CameraService\""
+	DEBUG_CFLAGS="${DEBUG_CFLAGS} -DLOG_DEBUG -DLOG_TAG=\"CameraService\" -g -O0"
+fi
+
 
 # Generic compiler characteristics.
 AC_OPENMP

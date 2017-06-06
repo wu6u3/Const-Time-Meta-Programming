@@ -12,6 +12,8 @@ AUTOMAKE_OPTIONS = foreign
 # Make sure that when we re-make ./configure, we get the macros we need.
 ACLOCAL_AMFLAGS = -I m4 --install
 
+
+
 # Automake directories. 
 SUBDIRS = $(GLOG_HOME) .
 
