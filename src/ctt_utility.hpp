@@ -57,9 +57,6 @@ p2|             |
 template <typename T>
 static constexpr auto interpolate2D(T a00, T a01, T a10, T a11, const double p1, const double p2){
   return interpolate1D(interpolate1D(a00, a01,p1), interpolate1D(a10, a11,p1), p2);
-  
-
-
 }
 
 

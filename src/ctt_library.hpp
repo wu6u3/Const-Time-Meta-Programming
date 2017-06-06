@@ -14,7 +14,9 @@ class LookUpTable{
   static constexpr 
 
   template <typename ... T>
-  static constexpr auto table(T... );
+  static constexpr void LookUpTable(T... n){
+    //`constexpr unsigned int num_elements = []() { return _size1*_size2; } 
+  }
 
   private:
   
