@@ -45,3 +45,5 @@ build-aux/*
 aclocal.m4
 *.Tpo
 m4/*
+*.Plo
+*.Po
