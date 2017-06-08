@@ -2,8 +2,15 @@
 #define __CTT_UTILITY__
 
 //#include<ratio>
+#include<utility>
 #include<iostream>
 namespace CTTimer{
+template <typename T1, typename T2>
+std::ostream& operator<< (std::ostream& os, const std::pair<T1, T2> & obj){
+  os<< "{"<<obj.first<<", "<< obj.second<<"}";
+  return os;
+}
+
 
 template <typename ... T>
 static constexpr auto sum(T... s){
@@ -15,31 +22,6 @@ static constexpr auto multi(T... s){
   return (...*s);
 }
 
-
-/*
-get index 1d
-
-*/
-
-template <auto first, auto... rest>
-static constexpr auto get_top_aux(){
-  return (first);
-}
-
-template <auto... seq>
-static constexpr auto get_top(){
-  return get_top_aux<seq...>();
-}
-
-template <auto first, auto... rest>
-static constexpr auto get_index_id_aux(unsigned int i, float s){
-  return ( s>first )? ( std::make_pair( i, get_ratio_1D(first, get_top<rest...>(), s ))):( get_index_id_aux<rest...>(i+1, s));
-}
-
-template <typename ... T>
-static constexpr auto get_index_id(float s, T... seq){
-  return get_index_id_aux<seq...>(0, s);
-}
 
 /*  
 get_ratio_1D
@@ -58,7 +40,8 @@ static constexpr auto get_ratio_1D(T a0, T a1, T o){
 //#ifdef _DEBUG 
   static_assert(std::is_floating_point<T>::value);
 //#endif
-  return (a1 > a0) ? (( a1 - o ) /( a1 - a0 )) : (( a0 - o ) / (a0 - a1));
+                    /* a0---o-------a1             a1-----o---------a0 */     
+  return (a1 > a0) ? (( o - a0 ) /( a1 - a0 )) : (( o - a1 ) / (a0 - a1));
 }
 
 
@@ -101,6 +84,78 @@ static constexpr auto interpolate_2D(T a00, T a01, T a10, T a11, const double p1
   return interpolate_1D(interpolate_1D(a00, a01,p1), interpolate_1D(a10, a11,p1), p2);
 }
 
+
+
+template <class T1, class... T2>
+static constexpr auto get_top_aux(T1 first, T2... rest){
+  return (first);
+}
+
+template <typename ...T>
+static constexpr auto get_top(T... seq){
+  return get_top_aux(seq...);
+}
+
+template <typename T>
+static constexpr auto get_top(T seq){
+  return seq;
+}
+
+
+template <typename T, class T1, class T2>
+static constexpr auto get_index_id_aux(unsigned int i, T s, T1 first, T2 rest){
+/*
+case 1
+  first ------ rest
+         s
+  return {i, ratio}
+
+case 2
+  first ------ rest 
+                      s
+  return {i+1, ratio}
+*/
+
+
+  const double rest_d = get_top(rest);
+  return ( s<= rest_d )?
+  /*case 1*/ (std::make_pair(i  , get_ratio_1D(first, rest, s))):
+  /*case 2*/ (std::make_pair(i+1, get_ratio_1D(first, rest, s)));
+   
+}
+
+
+template <typename T, class T1, class ... T2>
+static constexpr auto get_index_id_aux(unsigned int i, T s, T1 first, T2... rest){
+  const double rest_d = get_top(rest...);
+/*
+case 1
+  first ------ rest
+s
+  return {i, ratio} (ratio < 0)
+
+case 2
+  first ------ rest 
+          s            
+  return {i, ratio}
+
+case 3
+  first ------ rest 
+                       s
+  recursive call 
+*/                                    
+  return ( s <= rest_d )? 
+  /* case 1 & case 2 */
+  ( std::make_pair( i, get_ratio_1D(first, rest_d, s ))):  
+  /* case 3 */
+  (get_index_id_aux(i+1, s, rest...));
+
+}
+
+template <typename Ts, typename ... T>
+static constexpr auto get_index_id(Ts s, T... seq){
+  return get_index_id_aux(0, s, seq...);
+}
 
 
 template<typename... T>
