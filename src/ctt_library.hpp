@@ -2,7 +2,7 @@
 #define __CTT_LIBRARY__
 
 namespace CTTimer{
-
+/*
 class LookUpTable{
 
   public:
@@ -14,7 +14,6 @@ class LookUpTable{
         
   }; 
   
-  constexpr 
 
   static constexpr unsigned int size1();
   static constexpr unsigned int size2();
@@ -42,7 +41,7 @@ static constexpr unsigned int size1(){
 static constexpr unsigned int size2(){
   return _size2;
 }
-
+*/
 
 
 };

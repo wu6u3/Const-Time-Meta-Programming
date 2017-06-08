@@ -21,6 +21,10 @@ SUBDIRS = $(GLOG_HOME) .
 CC = clang
 CXX = clang++
 CXXFLAGS = @CXXFLAGS@
+CFLAGS = -g -O3
+CXXFLAGS = -g -O3
+CPP = clang -E
+CXXCPP = clang++ -E
 
 # Initialize variables here so we can use += operator everywhere else.
 lib_LTLIBRARIES =
@@ -71,10 +75,12 @@ libCTTimer_la_CXXFLAGS = $(CTT_CXXFLAGS)
 libCTTimer_la_SOURCES =
 libCTTimer_la_SOURCES += src/ctt_utility.cpp
 libCTTimer_la_SOURCES += src/ctt_timer.cpp
-
+libCTTimer_la_SOURCES += src/ctt_library.cpp
+ 
 # Package include 
 pkginclude_HEADERS += src/ctt_utility.hpp
 pkginclude_HEADERS += src/ctt_timer.hpp
+pkginclude_HEADERS += src/ctt_library.hpp
 
 
 EXTRA_DIST += LICENSE

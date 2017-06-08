@@ -5,18 +5,29 @@
 #include<utility>
 #include<iostream>
 namespace CTTimer{
+
+/* operation overloading for pair <<  */
 template <typename T1, typename T2>
 std::ostream& operator<< (std::ostream& os, const std::pair<T1, T2> & obj){
   os<< "{"<<obj.first<<", "<< obj.second<<"}";
   return os;
 }
 
+/*
+print out an list of variables
+*/
+template<typename... T>
+void print_arrays(T&&... arrays){
+  (std::cout << ... <<arrays) << '\n';
+}
 
+/* compile-time summasion */
 template <typename ... T>
 static constexpr auto sum(T... s){
   return (...+s);
 }
 
+/* compile-time multiplication */
 template <typename ... T>
 static constexpr auto multi(T... s){
   return (...*s);
@@ -86,7 +97,7 @@ static constexpr auto interpolate_2D(T a00, T a01, T a10, T a11, const double p1
 
 
 
-template <class T1, class... T2>
+template <typename T1, typename ... T2>
 static constexpr auto get_top_aux(T1 first, T2... rest){
   return (first);
 }
@@ -102,8 +113,8 @@ static constexpr auto get_top(T seq){
 }
 
 
-template <typename T, class T1, class T2>
-static constexpr auto get_index_id_aux(unsigned int i, T s, T1 first, T2 rest){
+template <typename T, typename T1, typename T2>
+static constexpr auto get_index_id_aux(const unsigned int i, T s, T1 first, T2 rest){
 /*
 case 1
   first ------ rest
@@ -125,8 +136,8 @@ case 2
 }
 
 
-template <typename T, class T1, class ... T2>
-static constexpr auto get_index_id_aux(unsigned int i, T s, T1 first, T2... rest){
+template <typename T, typename T1, typename ... T2>
+static constexpr auto get_index_id_aux(const unsigned int i, T s, T1 first, T2... rest){
   const double rest_d = get_top(rest...);
 /*
 case 1
@@ -146,22 +157,28 @@ case 3
 */                                    
   return ( s <= rest_d )? 
   /* case 1 & case 2 */
-  ( std::make_pair( i, get_ratio_1D(first, rest_d, s ))):  
+  (std::make_pair( i, get_ratio_1D(first, rest_d, s ))):  
   /* case 3 */
   (get_index_id_aux(i+1, s, rest...));
 
 }
 
+/* 
+Given a array of indeces and a target, return a pair of index + ratio  
+
+example:  
+[10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0 ]
+target = 2.5
+==>
+return {2, 0.5}
+
+*/
 template <typename Ts, typename ... T>
 static constexpr auto get_index_id(Ts s, T... seq){
   return get_index_id_aux(0, s, seq...);
 }
 
 
-template<typename... T>
-void print_arrays(T&&... arrays){
-  (std::cout << ... <<arrays) << '\n';
-}
 
 
 };
