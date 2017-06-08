@@ -1,7 +1,7 @@
 #ifndef __CTT_UTILITY__
 #define __CTT_UTILITY__
 
-#include<ratio>
+//#include<ratio>
 #include<iostream>
 namespace CTTimer{
 
@@ -15,6 +15,24 @@ static constexpr auto multi(T... s){
   return (...*s);
 }
 
+
+/*  
+
+get_ratio_1D
+Given 2 values
+get ratio p 
+
+a0--o------a1
+  p    1-p
+
+|a0o|/|a0a1| = p
+
+*/
+
+template <typename T>
+static constexpr auto get_ratio_1D(T a0, T a1, T o){
+  return (a1 > a0) ? (( a1 - o ) /( a1 - a0 )) : (( a0 - o ) / (a0 - a1));
+}
 
 
 /*  
@@ -31,7 +49,7 @@ a0--o------a1
 */
 
 template <typename T>
-static constexpr auto interpolate1D(T a0, T a1, const double p){
+static constexpr auto interpolate_1D(T a0, T a1, const double p){
   return (a1 > a0) ? (( a1 - a0 ) * p + a0) : (( a0 - a1 ) * p + a1);
 }
 
@@ -55,8 +73,8 @@ p2|             |
 
 */
 template <typename T>
-static constexpr auto interpolate2D(T a00, T a01, T a10, T a11, const double p1, const double p2){
-  return interpolate1D(interpolate1D(a00, a01,p1), interpolate1D(a10, a11,p1), p2);
+static constexpr auto interpolate_2D(T a00, T a01, T a10, T a11, const double p1, const double p2){
+  return interpolate_1D(interpolate_1D(a00, a01,p1), interpolate_1D(a10, a11,p1), p2);
 }
 
 

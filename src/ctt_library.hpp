@@ -6,24 +6,32 @@ namespace CTTimer{
 class LookUpTable{
 
   public:
+ 
+  template <unsigned int s1, unsigned int s2, double ... s>
+  constexpr LookUpTable()
+  :_size1(s1), _size2(s2)
+  {
+        
+  }; 
   
+  constexpr 
+
   static constexpr unsigned int size1();
   static constexpr unsigned int size2();
 
   
-  static constexpr 
-
-  template <typename ... T>
-  static constexpr void LookUpTable(T... n){
+//  template <typename ... T>
+//  static constexpr void LookUpTable(T... n){
     //`constexpr unsigned int num_elements = []() { return _size1*_size2; } 
-  }
+//  }
 
   private:
   
-  const unsigned int _size1;
-  const unsigned int _size2;
-
+  constexpr unsigned int _size1;
+  constexpr unsigned int _size2;
   
+
+  constexpr double _value[_size1*_size2]; 
   
 };
 
