@@ -20,7 +20,7 @@ SUBDIRS = $(GLOG_HOME) .
 # Package-related substitution variables.
 CC = clang
 CXX = clang++
-CXXFLAGS = @CXXFLAGS@
+#CXXFLAGS = @CXXFLAGS@
 CFLAGS = -g -O3
 CXXFLAGS = -g -O3
 CPP = clang -E
@@ -66,6 +66,8 @@ main_CTTimer_CXXFLAGS = $(CTT_CXXFLAGS)
 main_CTTimer_LDADD = libCTTimer.la
 main_CTTimer_LDADD += $(CTT_LIB)
 main_CTTimer_SOURCES = main/ctt_main.cpp
+main_CTTimer_SOURCES += main/ctt_main.hpp
+
 
 # Library definition: libcctimer.la 
 lib_LTLIBRARIES += libCTTimer.la

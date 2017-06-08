@@ -51,7 +51,8 @@ static constexpr auto get_ratio_1D(T a0, T a1, T o){
 //#ifdef _DEBUG 
   static_assert(std::is_floating_point<T>::value);
 //#endif
-                    /* a0---o-------a1             a1-----o---------a0 */     
+//                             larger -->                      larger --> 
+//                     a0---o-------a1             a1-----o---------a0 
   return (a1 > a0) ? (( o - a0 ) /( a1 - a0 )) : (( o - a1 ) / (a0 - a1));
 }
 
@@ -141,16 +142,19 @@ static constexpr auto get_index_id_aux(const unsigned int i, T s, T1 first, T2..
   const double rest_d = get_top(rest...);
 /*
 case 1
+
   first ------ rest
 s
   return {i, ratio} (ratio < 0)
 
 case 2
+
   first ------ rest 
           s            
   return {i, ratio}
 
 case 3
+
   first ------ rest 
                        s
   recursive call 

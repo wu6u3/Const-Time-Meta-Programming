@@ -119,7 +119,8 @@ main/main_CTTimer-ctt_main.o: main/ctt_main.cpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/istream.tcc \
   src/ctt_timer.hpp src/ctt_utility.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/utility \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/stl_relops.h
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/stl_relops.h \
+  main/ctt_main.hpp
 
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/iostream:
 
@@ -424,3 +425,5 @@ src/ctt_utility.hpp:
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/utility:
 
 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../include/c++/6.3.1/bits/stl_relops.h:
+
+main/ctt_main.hpp:
