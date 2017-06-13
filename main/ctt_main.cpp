@@ -1,7 +1,7 @@
 #include<iostream>
 
 #include"ctt_timer.hpp"
-#include"ctt_main.hpp"
+//#include"ctt_main.hpp"
 
 
 using namespace CTTimer;
@@ -68,7 +68,7 @@ int main(){
   ).first<<std::endl;
 
 
-  test();
+  //test();
   static_assert(std::make_pair(1.3,'c').first ==1.3);
   static_assert(get_index_id(4.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5).first == 5);
   const auto [x, y] = get_index_id(4.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5);

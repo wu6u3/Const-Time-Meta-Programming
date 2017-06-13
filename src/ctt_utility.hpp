@@ -183,6 +183,16 @@ static constexpr auto get_index_id(Ts s, T... seq){
 }
 
 
+/**/
+
+template <size_t size1, size_t size2, typename ... TABLE>
+static constexpr auto get_value(std::pair<double, double> target, const double idx1[size1], const double idx2[size2], TABLE... table){
+  
+
+  constexpr auto idx1 = get_index_id(targer.first, idx1)
+ 
+}
+
 
 
 };
