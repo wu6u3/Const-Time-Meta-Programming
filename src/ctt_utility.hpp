@@ -172,7 +172,7 @@ Given a array of indeces and a target, return a pair of index + ratio
 
 example:  
 [10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0 ]
-target = 2.5
+target = 12.5
 ==>
 return {2, 0.5}
 
@@ -189,7 +189,7 @@ template <size_t size1, size_t size2, typename ... TABLE>
 static constexpr auto get_value(std::pair<double, double> target, const double idx1[size1], const double idx2[size2], TABLE... table){
   
 
-  constexpr auto idx1 = get_index_id(targer.first, idx1)
+  //constexpr auto idx1 = get_index_id(target.first, idx1);
  
 }
 
